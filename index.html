@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Fernandes - Currículo XP</title>
+    
+    <!-- Biblioteca XP.css -->
+    <link rel="stylesheet" href="https://unpkg.com/xp.css">
+    
+    <style>
+        /* Wallpaper e Estilo Global */
+        body {
+            /* Fundo clássico "Bliss" e cor de segurança caso a imagem falhe */
+            background: #004e98 url('fundo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+            font-family: Tahoma, sans-serif;
+        }
+        
+        .desktop-icons {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .icon {
+            width: 80px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .icon img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.8));
+        }
+        
+        .icon span {
+            text-shadow: 1px 1px 2px black;
+            font-size: 12px;
+        }
+
+        /* Definição das Janelas */
+        .window {
+            position: absolute;
+            display: none;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Posições e tamanhos das janelas */
+        #cv-window { top: 30px; left: 100px; width: 650px; }
+        #ie-window { top: 60px; left: 180px; width: 700px; }
+        #notepad-window { top: 120px; left: 260px; width: 400px; }
+        #mines-window { top: 150px; left: 350px; width: 250px; }
+        
+        /* Permite fazer scroll dentro do CV se o texto for longo */
+        #cv-window .window-body {
+            max-height: 450px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 15px;
+        }
+        
+        /* Estilos do Currículo */
+        .cv-content {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        /* FOTOGRAFIA EM CÍRCULO */
+        .cv-photo {
+            width: 100px;
+            height: 100px; 
+            border: 2px solid #0055e5;
+            border-radius: 50%; 
+            object-fit: cover; 
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.4); 
+        }
+
+        /* Jogo das Minas Formatado */
+        #mines-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 25px);
+            gap: 0; 
+            justify-content: center;
+            background: #c0c0c0;
+            padding: 5px;
+            border: 3px inset #fff;
+            margin-bottom: 15px;
+        }
+        
+        #mines-grid button {
+            min-width: 25px !important; 
+            min-height: 25px !important;
+            width: 25px !important;
+            height: 25px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="xp">
+
+    <!-- Ícones do Ambiente de Trabalho -->
+    <div class="desktop-icons">
+        <div class="icon" onclick="openWindow('cv-window')">
+            <img src="https://win98icons.alexmeub.com/icons/png/directory_explorer-5.png" alt="CV">
+            <span>Meu Currículo</span>
+        </div>
+        <div class="icon" onclick="openWindow('ie-window')">
+            <img src="https://win98icons.alexmeub.com/icons/png/msie2-0.png" alt="Internet Explorer">
+            <span>Wintech</span>
+        </div>
+        <div class="icon" onclick="openWindow('notepad-window')">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="Notepad">
+            <span>Contactos</span>
+        </div>
+        <div class="icon" onclick="openWindow('mines-window')">
+            <img src="https://win98icons.alexmeub.com/icons/png/game_mine_1-0.png" alt="Minas">
+            <span>Minesweeper</span>
+        </div>
+    </div>
+
+    <!-- Janela do Currículo -->
+    <div class="window" id="cv-window">
+        <div class="title-bar">
+            <div class="title-bar-text">curriculo_joao.exe</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close" onclick="closeWindow('cv-window')"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            
+            <div class="cv-content">
+                <img src="foto.jpg" alt="João Carlos Dionísio Fernandes" class="cv-photo">
+                
+                <div>
+                    <h3 style="margin-top: 0; margin-bottom: 5px;">João Carlos Dionísio Fernandes</h3>
+                    <p style="font-size: 11px; color: gray; margin-top: 0;">Nacionalidade: Portuguesa | Data de Nascimento: 15/02/1976</p>
+                    <p style="font-size: 12px; text-align: justify; margin-bottom: 5px;">
+                        <strong>A inicializar... A carregar Perfil 2.0...</strong><br>
+                        A minha jornada profissional tem sido pautada pelo crescimento contínuo e pela paixão pela tecnologia. Iniciei o meu percurso na Auchan, em Setúbal, como Vendedor, onde aprendi a importância da proximidade com o cliente e do conhecimento técnico profundo sobre o produto. Ao longo dos anos, passei por Cascais e Almada, moldando a minha visão sobre diferentes mercados e perfis de consumo.
+                    </p>
+                </div>
+            </div>
+
+            <p style="font-size: 12px; text-align: justify; margin-top: 0;">
+                Neste processo de evolução, assumi o desafio de liderar equipas de vendedores de equipamentos tecnológicos, garantindo não só o cumprimento de objetivos comerciais, mas também o desenvolvimento e motivação dos profissionais que acompanho diariamente. Atualmente, concilio a minha responsabilidade profissional com a formação académica, acreditando que a combinação entre a experiência prática de gestão no retalho e a atualização constante de conhecimentos é a chave para enfrentar os desafios de um setor em constante transformação. O "bichinho" da tecnologia corre sempre em <em>background</em>!
+            </p>
+
+            <!-- Experiência Profissional -->
+            <fieldset style="margin-bottom: 10px;">
+                <legend>Experiência_Profissional</legend>
+                <ul style="font-size: 12px; margin: 5px 0; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">
+                        <strong>Auchan Retail Portugal</strong> <em>(Out. 1996 - Presente)</em>
+                        <ul style="padding-left: 15px; margin-top: 5px;">
+                            <li><strong>Responsável Comercial de Informática, Telecomunicações, Foto e Áudio</strong> | <em>Fev. 2018 - Presente</em><br>
+                            Evolução e liderança com passagens pelos mercados de Cascais, Almada e, atualmente, Setúbal.</li>
+                            <li><strong>Representante dos Acionistas</strong> | <em>Fev. 2013 - Fev. 2015</em></li>
+                            <li><strong>Vendedor</strong> | <em>Out. 1996 - Jan. 2018</em><br>
+                            Em Nov. 1998, fui pioneiro no Grupo Auchan Portugal ao ser escolhido como 1º elemento para Vendedor de Informática. Em 2006 fui responsável pelo desenvolvimento do projeto inovador "Micro-Clínica de Informática". Gestão de diversas famílias de artigos, suporte ao cliente e gestão da página de Facebook não oficial da Box Jumbo Setúbal.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <strong>CEO & Administrador | Wintech.pt</strong> <em>(Ago. 2002 - Presente)</em><br>
+                        Gestor de conteúdos e administrador do portal de tecnologia Wintech (www.wintech.pt).
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <strong>FIFA DataBase Editor | Electronic Arts (EA)</strong> <em>(2006 - 2009)</em><br>
+                        Edição e criação de elementos para a base de dados presente no jogo FIFA.
+                    </li>
+                    <li>
+                        <strong>Início de Carreira</strong> <em>(Jan. 1996 - Set. 1996)</em><br>
+                        Passagens como Operador Ajudante e Estagiário na PluriCoop (Operação de Caixa, Lançamento de Inventário) e como Técnico de Informática na Papelaria 72.
+                    </li>
+                </ul>
+            </fieldset>
+
+            <!-- Educação -->
+            <fieldset style="margin-bottom: 10px;">
+                <legend>Educação & Patches Instalados</legend>
+                <ul style="font-size: 12px; margin: 5px 0; padding-left: 20px;">
+                    <li><strong>Estudante - Gestão de Redes e Sistemas Computacionais (GRSC 0925)</strong><br>ATEC - Academia de Formação | <em>Set. 2025 - Presente (Híbrido)</em></li>
+                    <li style="margin-top: 5px;"><strong>Estudante - PRI GRSC 0425</strong><br>ATEC - Academia de Formação | <em>Abr. 2025 - Jul. 2025</em></li>
+                    <li style="margin-top: 5px;"><strong>Técnico de Informática e Gestão de Empresas</strong><br>Escola Profissional de Setúbal | <em>Set. 1992 - Jul. 1995</em></li>
+                </ul>
+            </fieldset>
+
+            <!-- Competências -->
+            <fieldset style="margin-bottom: 10px;">
+                <legend>Skills & Drivers</legend>
+                <ul style="font-size: 12px; margin: 5px 0; padding-left: 20px;">
+                    <li><strong>Hard Skills:</strong> Troubleshooting de Hardware (Desktops) e Sistemas Operativos, Remoção de Malware, MS Office (Word, Excel, PowerPoint, Outlook), Gestão de Redes Sociais, Forte Compreensão de Produto.</li>
+                    <li><strong>Soft Skills:</strong> Liderança e Motivação de Equipas, Escuta e Comunicação, Resolução de Problemas, Tomada de Decisão, Orientação para Objetivos e Fiabilidade.</li>
+                    <li><strong>Idiomas:</strong> Português (Nativo), Inglês (Compreensão B1 / Expressão A2).</li>
+                </ul>
+            </fieldset>
+            
+            <div style="text-align: right; margin-top: 15px;">
+                <button onclick="closeWindow('cv-window')">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Janela do Internet Explorer (Wintech) -->
+    <div class="window" id="ie-window">
+        <div class="title-bar">
+            <div class="title-bar-text">Wintech - Microsoft Internet Explorer</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close" onclick="closeWindow('ie-window')"></button>
+            </div>
+        </div>
+        <div class="window-body" style="margin: 0; padding: 0; display: flex; flex-direction: column;">
+            <!-- Barra de Endereço Falsa -->
+            <div style="background: #ece9d8; padding: 5px; border-bottom: 1px solid #aca899; font-size: 12px; display: flex; align-items: center; gap: 10px;">
+                <span>Endereço:</span>
+                <input type="text" value="https://www.wintech.pt" readonly style="flex-grow: 1; padding: 2px;">
+                <a href="https://www.wintech.pt" target="_blank" style="text-decoration: none;">
+                    <button style="cursor: pointer;">Ir</button>
+                </a>
+            </div>
+            
+            <!-- Conteúdo Simulado (Substitui o Iframe) -->
+            <div style="width: 100%; height: 350px; background-color: #ffffff; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
+                
+                <!-- Ícone clássico do IE grande -->
+                <img src="https://win98icons.alexmeub.com/icons/png/msie1-0.png" alt="IE Logo" width="64" height="64" style="margin-bottom: 15px;">
+                
+                <h1 style="color: #004e98; font-family: Tahoma, sans-serif; margin: 0 0 10px 0;">Wintech.pt</h1>
+                <p style="font-family: Tahoma, sans-serif; font-size: 14px; color: #333; max-width: 80%;">
+                    Portal de informação tecnológica fundado em 2002.
+                </p>
+                
+                <p style="font-family: Tahoma, sans-serif; font-size: 11px; color: #888; margin-bottom: 25px;">
+                    [A pré-visualização direta está protegida pelas políticas de segurança do servidor]
+                </p>
+                
+                <a href="https://www.wintech.pt" target="_blank" style="text-decoration: none;">
+                    <button style="font-size: 14px; padding: 8px 15px; cursor: pointer; font-weight: bold;">
+                        🌐 Abrir Portal num Novo Separador
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Janela do Bloco de Notas (Contactos) -->
+    <div class="window" id="notepad-window">
+        <div class="title-bar">
+            <div class="title-bar-text">contactos.txt - Bloco de Notas</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close" onclick="closeWindow('notepad-window')"></button>
+            </div>
+        </div>
+        <div class="window-body" style="margin: 0; padding: 0;">
+            <!-- Menu Falso do Bloco de Notas -->
+            <div style="background: #ece9d8; padding: 2px 5px; border-bottom: 1px solid #aca899; font-size: 12px;">
+                <span style="margin-right: 10px; cursor: default;">Ficheiro</span>
+                <span style="margin-right: 10px; cursor: default;">Editar</span>
+                <span style="margin-right: 10px; cursor: default;">Formatar</span>
+                <span style="cursor: default;">Ajuda</span>
+            </div>
+            <!-- Área de Texto -->
+            <textarea style="width: 100%; height: 250px; border: none; resize: none; font-family: 'Courier New', Courier, monospace; font-size: 14px; padding: 10px; box-sizing: border-box; outline: none;">
+========================================
+       CONTACTOS - JOÃO FERNANDES
+========================================
+
+> E-mail Profissional:
+  joao.fernandes@auchan.pt
+
+> E-mail Pessoal:
+  j__fernandes@hotmail.com
+
+> Portais e Projetos:
+  - www.wintech.pt
+
+> Localização:
+  Setúbal, Portugal
+
+========================================
+"Sinta-se à vontade para me contactar!"
+            </textarea>
+        </div>
+    </div>
+
+    <!-- Janela do Minesweeper -->
+    <div class="window" id="mines-window">
+        <div class="title-bar">
+            <div class="title-bar-text">Minesweeper</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close" onclick="closeWindow('mines-window')"></button>
+            </div>
+        </div>
+        <div class="window-body" style="text-align: center;">
+            <div id="mines-grid"></div>
+            <button onclick="initMines()" style="margin-top: 5px;">☺ Reiniciar Jogo</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Gestão das Janelas ---
+        function openWindow(id) {
+            let win = document.getElementById(id);
+            win.style.display = 'block';
+            
+            // Puxa a janela clicada para a frente de todas as outras
+            document.querySelectorAll('.window').forEach(w => w.style.zIndex = 1);
+            win.style.zIndex = 10;
+        }
+
+        function closeWindow(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        // Permitir arrastar as janelas pelo título (Drag and Drop simples)
+        document.querySelectorAll('.window').forEach(win => {
+            let titleBar = win.querySelector('.title-bar');
+            let isDragging = false, startX, startY, initialLeft, initialTop;
+
+            titleBar.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                initialLeft = win.offsetLeft;
+                initialTop = win.offsetTop;
+                
+                // Traz a janela para a frente ao arrastar
+                document.querySelectorAll('.window').forEach(w => w.style.zIndex = 1);
+                win.style.zIndex = 10;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    win.style.left = initialLeft + (e.clientX - startX) + 'px';
+                    win.style.top = initialTop + (e.clientY - startY) + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+
+        // --- Lógica do Jogo das Minas ---
+        const rows = 8;
+        const cols = 8;
+        const numMines = 10;
+        let grid = [];
+
+        function initMines() {
+            const gridEl = document.getElementById('mines-grid');
+            gridEl.innerHTML = '';
+            grid = [];
+            
+            // Criar grelha
+            for (let i = 0; i < rows; i++) {
+                let row = [];
+                for (let j = 0; j < cols; j++) {
+                    row.push({ isMine: false, revealed: false, count: 0 });
+                    let btn = document.createElement('button');
+                    btn.onclick = () => reveal(i, j);
+                    btn.id = `cell-${i}-${j}`;
+                    gridEl.appendChild(btn);
+                }
+                grid.push(row);
+            }
+            
+            // Colocar as minas
+            let minesPlaced = 0;
+            while(minesPlaced < numMines) {
+                let r = Math.floor(Math.random() * rows);
+                let c = Math.floor(Math.random() * cols);
+                if (!grid[r][c].isMine) {
+                    grid[r][c].isMine = true;
+                    minesPlaced++;
+                }
+            }
+            
+            // Calcular adjacências
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    if (!grid[i][j].isMine) {
+                        let count = 0;
+                        for(let di = -1; di <= 1; di++) {
+                            for(let dj = -1; dj <= 1; dj++) {
+                                let ni = i + di, nj = j + dj;
+                                if(ni >= 0 && ni < rows && nj >= 0 && nj < cols && grid[ni][nj].isMine) {
+                                    count++;
+                                }
+                            }
+                        }
+                        grid[i][j].count = count;
+                    }
+                }
+            }
+        }
+
+        function reveal(i, j) {
+            if (grid[i][j].revealed) return;
+            grid[i][j].revealed = true;
+            let btn = document.getElementById(`cell-${i}-${j}`);
+            btn.disabled = true;
+            btn.style.border = '1px solid #999';
+            btn.style.background = '#e0e0e0';
+            
+            if (grid[i][j].isMine) {
+                btn.innerText = '💣';
+                btn.style.backgroundColor = 'red';
+                setTimeout(() => {
+                    alert('BOOM! Pisaste uma mina. A reiniciar...');
+                    initMines();
+                }, 100);
+            } else {
+                if (grid[i][j].count > 0) {
+                    btn.innerText = grid[i][j].count;
+                    const colors = ['#0000FF', '#008000', '#FF0000', '#000080', '#800000', '#008080', '#000000', '#808080'];
+                    btn.style.color = colors[grid[i][j].count - 1];
+                } else {
+                    for(let di = -1; di <= 1; di++) {
+                        for(let dj = -1; dj <= 1; dj++) {
+                            let ni = i + di, nj = j + dj;
+                            if(ni >= 0 && ni < rows && nj >= 0 && nj < cols) {
+                                reveal(ni, nj);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        window.onload = () => {
+            initMines();
+        };
+    </script>
+</body>
+</html>
