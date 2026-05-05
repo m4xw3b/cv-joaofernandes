@@ -3,7 +3,7 @@
 Bem-vindo ao repositório do meu currículo interativo! 
 Este projeto é uma viagem no tempo até ao início dos anos 2000, apresentando o meu percurso profissional e académico através da interface clássica do **Windows XP**.
 
-🔗 **[Clica aqui para ver o Currículo Online] (https://github.com/m4xw3b/cv-joaofernandes)**
+🔗 **[Clica aqui para ver o Currículo Online] (https://m4xw3b.github.io/cv-joaofernandes/)**
 
 ## 🚀 Funcionalidades
 
