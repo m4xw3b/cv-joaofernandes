@@ -236,13 +236,18 @@
                 width: fit-content;
             }
 
-            /* Adaptar cores de texto para ecrã escuro */
+            /* Adaptar cores de texto e FUNDOS para ecrã escuro */
             .cv-photo { border-color: #fff !important; }
             .window-body p, .window-body li, .window-body legend, .window-body strong, .window-body em, .window-body h3 {
                 color: #fff !important;
                 font-family: 'Segoe UI', sans-serif !important;
             }
-            fieldset { border-color: #444 !important; }
+            
+            /* CORREÇÃO AQUI: Fundo transparente para os fieldsets em vez de branco! */
+            fieldset { 
+                border-color: #444 !important; 
+                background-color: transparent !important; 
+            }
 
             /* Ajustes Internet Explorer Mobile */
             #ie-window .window-body > div { background: #000 !important; color: #fff !important; border-bottom: none !important; }
@@ -250,7 +255,9 @@
             
             /* Ajustes Notepad Mobile */
             #notepad-window textarea { background: #000 !important; color: #fff !important; border: none !important; }
-            #notepad-window .window-body > div:first-child { display: none !important; } /* Esconde a barra menu 'Ficheiro Editar...' */
+            
+            /* CORREÇÃO AQUI: Esconder corretamente a barra de "Ficheiro Editar..." do bloco de notas */
+            #notepad-window .window-body > div:nth-child(2) { display: none !important; }
             
             /* Botões Gerais (Adaptação botões XP para botoes retos/flat) */
             .window-body button {
