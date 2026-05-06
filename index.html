@@ -12,6 +12,7 @@
            1. ESTILO DESKTOP (WINDOWS XP)
            ========================================= */
         body {
+            /* Fundo clássico "Bliss" */
             background: #004e98 url('fundo.jpg') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
@@ -46,12 +47,19 @@
             font-size: 12px;
         }
 
+        /* Gestão Segura das Janelas (Evita quebra de layout) */
         .window {
             position: absolute;
-            display: none;
+            display: none; /* Escondido por defeito */
             box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
         }
 
+        /* Classe ativada pelo JavaScript para abrir a janela no PC */
+        .window.is-open {
+            display: block;
+        }
+
+        /* Posições e tamanhos das janelas */
         #cv-window { top: 30px; left: 100px; width: 650px; }
         #ie-window { top: 60px; left: 180px; width: 700px; }
         #notepad-window { top: 120px; left: 260px; width: 400px; }
@@ -104,7 +112,7 @@
             box-sizing: border-box;
         }
 
-        /* Esconder botão voltar da versão Mobile no Desktop */
+        /* Esconder botão e menu mobile no Desktop */
         .mobile-back-btn { display: none; }
 
 
@@ -116,10 +124,9 @@
                 background: #000 !important; /* Fundo Preto */
                 padding: 15px !important;
                 overflow-y: auto !important;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; /* Letra WP */
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; 
             }
 
-            /* Título Clássico do ecrã inicial */
             body::before {
                 content: "Iniciar";
                 display: block;
@@ -130,7 +137,6 @@
                 letter-spacing: -1px;
             }
 
-            /* Transformar a lista de ícones numa grelha de Mosaicos (Tiles) */
             .desktop-icons {
                 display: grid !important;
                 grid-template-columns: repeat(2, 1fr) !important;
@@ -138,7 +144,6 @@
                 flex-direction: row !important;
             }
 
-            /* Estilo base dos Mosaicos */
             .icon {
                 width: 100% !important;
                 height: 150px !important;
@@ -151,31 +156,24 @@
                 transition: transform 0.1s ease !important;
             }
 
-            /* Efeito de toque (afundar) */
-            .icon:active {
-                transform: scale(0.95) !important;
-            }
+            .icon:active { transform: scale(0.95) !important; }
 
-            /* Cores e Tamanhos Específicos dos Mosaicos */
-            .icon:nth-child(1) { grid-column: span 2; background-color: #0078D7; } /* CV: Azul Escuro (Largo) */
-            .icon:nth-child(2) { background-color: #D83B01; } /* Wintech: Laranja */
-            .icon:nth-child(3) { background-color: #107C10; } /* Contactos: Verde */
-            .icon:nth-child(4) { background-color: #5C2D91; } /* Minas: Roxo Xbox */
+            .icon:nth-child(1) { grid-column: span 2; background-color: #0078D7; } 
+            .icon:nth-child(2) { background-color: #D83B01; } 
+            .icon:nth-child(3) { background-color: #107C10; } 
+            .icon:nth-child(4) { background-color: #5C2D91; } 
 
-            /* Transformar ícones em silhuetas brancas planas */
             .icon img {
                 width: 40px !important;
                 height: 40px !important;
                 margin-bottom: auto !important; 
-                filter: brightness(0) invert(1) !important; /* Fica 100% branco */
+                filter: brightness(0) invert(1) !important; 
                 box-shadow: none !important;
             }
 
-            /* Texto dos Mosaicos */
             .icon span {
                 text-shadow: none !important;
                 font-size: 16px !important;
-                font-family: 'Segoe UI', sans-serif !important;
                 font-weight: 400 !important;
                 letter-spacing: 0.5px !important;
             }
@@ -183,7 +181,9 @@
             /* =========================================
                ESTILO DAS APPS ABERTAS (FULLSCREEN)
                ========================================= */
-            .window {
+            
+            /* Classe ativada pelo JavaScript para abrir a janela no Mobile */
+            .window.is-open {
                 position: fixed !important;
                 top: 0 !important; left: 0 !important;
                 width: 100vw !important; height: 100vh !important;
@@ -191,7 +191,7 @@
                 border: none !important;
                 background: #000 !important;
                 z-index: 9999 !important;
-                display: none; 
+                display: flex !important; 
                 flex-direction: column !important;
             }
 
@@ -208,7 +208,7 @@
                 text-transform: uppercase !important;
             }
 
-            .title-bar-controls { display: none !important; } /* Esconder X de fechar do XP */
+            .title-bar-controls { display: none !important; }
 
             .window-body {
                 background: #000 !important;
@@ -222,44 +222,44 @@
                 font-family: 'Segoe UI', sans-serif !important;
             }
 
-            /* Mostrar botão de voltar na versão Mobile */
             .mobile-back-btn {
                 display: inline-block !important;
                 background: transparent !important;
                 border: 2px solid #fff !important;
                 color: #fff !important;
                 padding: 8px 20px !important;
-                font-family: 'Segoe UI', sans-serif !important;
                 font-weight: normal !important;
                 margin-bottom: 20px !important;
                 cursor: pointer !important;
                 width: fit-content;
             }
 
-            /* Adaptar cores de texto e FUNDOS para ecrã escuro */
-            .cv-photo { border-color: #fff !important; }
-            .window-body p, .window-body li, .window-body legend, .window-body strong, .window-body em, .window-body h3 {
+            /* --- CORREÇÃO DO CONTRASTE AQUI --- */
+            /* Garante que o texto, listas e fundos das caixas ficam em alto contraste (branco sobre preto) */
+            .window-body p, 
+            .window-body li, 
+            .window-body legend, 
+            .window-body strong, 
+            .window-body em, 
+            .window-body h3 {
                 color: #fff !important;
-                font-family: 'Segoe UI', sans-serif !important;
             }
             
-            /* CORREÇÃO AQUI: Fundo transparente para os fieldsets em vez de branco! */
-            fieldset { 
+            fieldset, .window-body ul { 
                 border-color: #444 !important; 
                 background-color: transparent !important; 
+                background: transparent !important;
             }
 
-            /* Ajustes Internet Explorer Mobile */
+            /* --- CORREÇÕES ESPECÍFICAS DE CADA APP NO MOBILE --- */
             #ie-window .window-body > div { background: #000 !important; color: #fff !important; border-bottom: none !important; }
             #ie-window input { background: #222 !important; color: #fff !important; border: 1px solid #555 !important; }
             
-            /* Ajustes Notepad Mobile */
             #notepad-window textarea { background: #000 !important; color: #fff !important; border: none !important; }
             
-            /* CORREÇÃO AQUI: Esconder corretamente a barra de "Ficheiro Editar..." do bloco de notas */
-            #notepad-window .window-body > div:nth-child(2) { display: none !important; }
+            /* Esconde explicitamente o menu "Ficheiro Editar..." do bloco de notas no Mobile */
+            .notepad-menu-desktop { display: none !important; }
             
-            /* Botões Gerais (Adaptação botões XP para botoes retos/flat) */
             .window-body button {
                 background: #222 !important;
                 border: 2px solid #fff !important;
@@ -267,12 +267,12 @@
                 border-radius: 0 !important;
                 box-shadow: none !important;
                 padding: 10px 15px !important;
-                font-family: 'Segoe UI', sans-serif !important;
             }
             
             #mines-grid button { border: 1px solid #555 !important; padding: 0 !important; }
             
             .cv-content { flex-direction: column; align-items: center; text-align: center; }
+            .cv-photo { border-color: #fff !important; }
         }
     </style>
 </head>
@@ -403,18 +403,14 @@
             </div>
             
             <div style="width: 100%; height: 100%; min-height: 350px; background-color: #ffffff; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
-                
                 <img src="https://win98icons.alexmeub.com/icons/png/msie1-0.png" alt="IE Logo" width="64" height="64" style="margin-bottom: 15px;">
-                
                 <h1 style="color: #004e98; font-family: Tahoma, sans-serif; margin: 0 0 10px 0;">Wintech.pt</h1>
                 <p style="font-family: Tahoma, sans-serif; font-size: 14px; color: #333; max-width: 80%;">
                     Portal de informação tecnológica fundado em 2002.
                 </p>
-                
                 <p style="font-family: Tahoma, sans-serif; font-size: 11px; color: #888; margin-bottom: 25px;">
                     [A pré-visualização direta está protegida pelas políticas de segurança do servidor]
                 </p>
-                
                 <a href="https://www.wintech.pt" target="_blank" style="text-decoration: none;">
                     <button style="font-size: 14px; padding: 8px 15px; cursor: pointer; font-weight: bold;">
                         🌐 Abrir Portal num Novo Separador
@@ -439,12 +435,13 @@
                 <button class="mobile-back-btn" onclick="closeWindow('notepad-window')">← Iniciar</button>
             </div>
 
-            <div style="background: #ece9d8; padding: 2px 15px; border-bottom: 1px solid #aca899; font-size: 12px;">
+            <div class="notepad-menu-desktop" style="background: #ece9d8; padding: 2px 15px; border-bottom: 1px solid #aca899; font-size: 12px;">
                 <span style="margin-right: 10px; cursor: default;">Ficheiro</span>
                 <span style="margin-right: 10px; cursor: default;">Editar</span>
                 <span style="margin-right: 10px; cursor: default;">Formatar</span>
                 <span style="cursor: default;">Ajuda</span>
             </div>
+            
             <textarea style="width: 100%; flex-grow: 1; border: none; resize: none; font-family: 'Courier New', Courier, monospace; font-size: 14px; padding: 15px; box-sizing: border-box; outline: none; min-height: 250px;">
 ========================================
        CONTACTOS - JOÃO FERNANDES
@@ -488,21 +485,23 @@
     </div>
 
     <script>
-        // --- Gestão das Janelas ---
+        // --- Gestão Limpa das Janelas ---
         function openWindow(id) {
-            let win = document.getElementById(id);
-            win.style.display = 'flex'; // Alterado para flex em vez de block para garantir a formatação no Mobile
+            // 1. Fechar TODAS as janelas primeiro
+            document.querySelectorAll('.window').forEach(w => {
+                w.classList.remove('is-open');
+            });
             
-            // Puxa a janela clicada para a frente de todas as outras
-            document.querySelectorAll('.window').forEach(w => w.style.zIndex = 1);
-            win.style.zIndex = 10000;
+            // 2. Abrir apenas a janela que foi clicada
+            let win = document.getElementById(id);
+            win.classList.add('is-open');
         }
 
         function closeWindow(id) {
-            document.getElementById(id).style.display = 'none';
+            document.getElementById(id).classList.remove('is-open');
         }
 
-        // Permitir arrastar as janelas pelo título (Drag and Drop simples)
+        // Permitir arrastar as janelas pelo título no Desktop
         document.querySelectorAll('.window').forEach(win => {
             let titleBar = win.querySelector('.title-bar');
             let isDragging = false, startX, startY, initialLeft, initialTop;
@@ -513,10 +512,6 @@
                 startY = e.clientY;
                 initialLeft = win.offsetLeft;
                 initialTop = win.offsetTop;
-                
-                // Traz a janela para a frente ao arrastar
-                document.querySelectorAll('.window').forEach(w => w.style.zIndex = 1);
-                win.style.zIndex = 10000;
             });
 
             document.addEventListener('mousemove', (e) => {
@@ -542,7 +537,6 @@
             gridEl.innerHTML = '';
             grid = [];
             
-            // Criar grelha
             for (let i = 0; i < rows; i++) {
                 let row = [];
                 for (let j = 0; j < cols; j++) {
@@ -555,7 +549,6 @@
                 grid.push(row);
             }
             
-            // Colocar as minas
             let minesPlaced = 0;
             while(minesPlaced < numMines) {
                 let r = Math.floor(Math.random() * rows);
@@ -566,7 +559,6 @@
                 }
             }
             
-            // Calcular adjacências
             for (let i = 0; i < rows; i++) {
                 for (let j = 0; j < cols; j++) {
                     if (!grid[i][j].isMine) {
