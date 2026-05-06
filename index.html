@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Fernandes - Currículo XP</title>
     
-    <!-- Biblioteca XP.css -->
     <link rel="stylesheet" href="https://unpkg.com/xp.css">
     
     <style>
-        /* Wallpaper e Estilo Global */
+        /* =========================================
+           1. ESTILO DESKTOP (WINDOWS XP)
+           ========================================= */
         body {
-            /* Fundo clássico "Bliss" e cor de segurança caso a imagem falhe */
             background: #004e98 url('fundo.jpg') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
@@ -46,20 +46,17 @@
             font-size: 12px;
         }
 
-        /* Definição das Janelas */
         .window {
             position: absolute;
             display: none;
             box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
         }
 
-        /* Posições e tamanhos das janelas */
         #cv-window { top: 30px; left: 100px; width: 650px; }
         #ie-window { top: 60px; left: 180px; width: 700px; }
         #notepad-window { top: 120px; left: 260px; width: 400px; }
         #mines-window { top: 150px; left: 350px; width: 250px; }
         
-        /* Permite fazer scroll dentro do CV se o texto for longo */
         #cv-window .window-body {
             max-height: 450px;
             overflow-y: auto;
@@ -67,7 +64,6 @@
             padding-right: 15px;
         }
         
-        /* Estilos do Currículo */
         .cv-content {
             display: flex;
             gap: 15px;
@@ -75,7 +71,6 @@
             margin-bottom: 10px;
         }
 
-        /* FOTOGRAFIA EM CÍRCULO */
         .cv-photo {
             width: 100px;
             height: 100px; 
@@ -85,7 +80,6 @@
             box-shadow: 1px 1px 4px rgba(0,0,0,0.4); 
         }
 
-        /* Jogo das Minas Formatado */
         #mines-grid {
             display: grid;
             grid-template-columns: repeat(8, 25px);
@@ -109,11 +103,174 @@
             border-radius: 0;
             box-sizing: border-box;
         }
+
+        /* Esconder botão voltar da versão Mobile no Desktop */
+        .mobile-back-btn { display: none; }
+
+
+        /* =========================================
+           2. ESTILO MOBILE (WINDOWS PHONE / METRO UI)
+           ========================================= */
+        @media (max-width: 768px) {
+            body {
+                background: #000 !important; /* Fundo Preto */
+                padding: 15px !important;
+                overflow-y: auto !important;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; /* Letra WP */
+            }
+
+            /* Título Clássico do ecrã inicial */
+            body::before {
+                content: "Iniciar";
+                display: block;
+                color: white;
+                font-size: 42px;
+                font-weight: 300;
+                margin: 10px 0 30px 5px;
+                letter-spacing: -1px;
+            }
+
+            /* Transformar a lista de ícones numa grelha de Mosaicos (Tiles) */
+            .desktop-icons {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px !important;
+                flex-direction: row !important;
+            }
+
+            /* Estilo base dos Mosaicos */
+            .icon {
+                width: 100% !important;
+                height: 150px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-end !important;
+                align-items: flex-start !important;
+                padding: 15px !important;
+                box-sizing: border-box !important;
+                transition: transform 0.1s ease !important;
+            }
+
+            /* Efeito de toque (afundar) */
+            .icon:active {
+                transform: scale(0.95) !important;
+            }
+
+            /* Cores e Tamanhos Específicos dos Mosaicos */
+            .icon:nth-child(1) { grid-column: span 2; background-color: #0078D7; } /* CV: Azul Escuro (Largo) */
+            .icon:nth-child(2) { background-color: #D83B01; } /* Wintech: Laranja */
+            .icon:nth-child(3) { background-color: #107C10; } /* Contactos: Verde */
+            .icon:nth-child(4) { background-color: #5C2D91; } /* Minas: Roxo Xbox */
+
+            /* Transformar ícones em silhuetas brancas planas */
+            .icon img {
+                width: 40px !important;
+                height: 40px !important;
+                margin-bottom: auto !important; 
+                filter: brightness(0) invert(1) !important; /* Fica 100% branco */
+                box-shadow: none !important;
+            }
+
+            /* Texto dos Mosaicos */
+            .icon span {
+                text-shadow: none !important;
+                font-size: 16px !important;
+                font-family: 'Segoe UI', sans-serif !important;
+                font-weight: 400 !important;
+                letter-spacing: 0.5px !important;
+            }
+
+            /* =========================================
+               ESTILO DAS APPS ABERTAS (FULLSCREEN)
+               ========================================= */
+            .window {
+                position: fixed !important;
+                top: 0 !important; left: 0 !important;
+                width: 100vw !important; height: 100vh !important;
+                box-shadow: none !important;
+                border: none !important;
+                background: #000 !important;
+                z-index: 9999 !important;
+                display: none; 
+                flex-direction: column !important;
+            }
+
+            .title-bar {
+                background: #000 !important;
+                border: none !important;
+                padding: 20px 15px 5px 15px !important;
+            }
+
+            .title-bar-text {
+                font-family: 'Segoe UI', sans-serif !important;
+                font-size: 28px !important;
+                font-weight: 300 !important;
+                text-transform: uppercase !important;
+            }
+
+            .title-bar-controls { display: none !important; } /* Esconder X de fechar do XP */
+
+            .window-body {
+                background: #000 !important;
+                color: #fff !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 15px !important;
+                height: calc(100vh - 70px) !important;
+                max-height: none !important;
+                overflow-y: auto !important;
+                font-family: 'Segoe UI', sans-serif !important;
+            }
+
+            /* Mostrar botão de voltar na versão Mobile */
+            .mobile-back-btn {
+                display: inline-block !important;
+                background: transparent !important;
+                border: 2px solid #fff !important;
+                color: #fff !important;
+                padding: 8px 20px !important;
+                font-family: 'Segoe UI', sans-serif !important;
+                font-weight: normal !important;
+                margin-bottom: 20px !important;
+                cursor: pointer !important;
+                width: fit-content;
+            }
+
+            /* Adaptar cores de texto para ecrã escuro */
+            .cv-photo { border-color: #fff !important; }
+            .window-body p, .window-body li, .window-body legend, .window-body strong, .window-body em, .window-body h3 {
+                color: #fff !important;
+                font-family: 'Segoe UI', sans-serif !important;
+            }
+            fieldset { border-color: #444 !important; }
+
+            /* Ajustes Internet Explorer Mobile */
+            #ie-window .window-body > div { background: #000 !important; color: #fff !important; border-bottom: none !important; }
+            #ie-window input { background: #222 !important; color: #fff !important; border: 1px solid #555 !important; }
+            
+            /* Ajustes Notepad Mobile */
+            #notepad-window textarea { background: #000 !important; color: #fff !important; border: none !important; }
+            #notepad-window .window-body > div:first-child { display: none !important; } /* Esconde a barra menu 'Ficheiro Editar...' */
+            
+            /* Botões Gerais (Adaptação botões XP para botoes retos/flat) */
+            .window-body button {
+                background: #222 !important;
+                border: 2px solid #fff !important;
+                color: #fff !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                padding: 10px 15px !important;
+                font-family: 'Segoe UI', sans-serif !important;
+            }
+            
+            #mines-grid button { border: 1px solid #555 !important; padding: 0 !important; }
+            
+            .cv-content { flex-direction: column; align-items: center; text-align: center; }
+        }
     </style>
 </head>
 <body class="xp">
 
-    <!-- Ícones do Ambiente de Trabalho -->
     <div class="desktop-icons">
         <div class="icon" onclick="openWindow('cv-window')">
             <img src="https://win98icons.alexmeub.com/icons/png/directory_explorer-5.png" alt="CV">
@@ -133,7 +290,6 @@
         </div>
     </div>
 
-    <!-- Janela do Currículo -->
     <div class="window" id="cv-window">
         <div class="title-bar">
             <div class="title-bar-text">curriculo_joao.exe</div>
@@ -145,6 +301,8 @@
         </div>
         <div class="window-body">
             
+            <button class="mobile-back-btn" onclick="closeWindow('cv-window')">← Iniciar</button>
+
             <div class="cv-content">
                 <img src="foto.jpg" alt="João Carlos Dionísio Fernandes" class="cv-photo">
                 
@@ -162,7 +320,6 @@
                 Neste processo de evolução, assumi o desafio de liderar equipas de vendedores de equipamentos tecnológicos, garantindo não só o cumprimento de objetivos comerciais, mas também o desenvolvimento e motivação dos profissionais que acompanho diariamente. Atualmente, concilio a minha responsabilidade profissional com a formação académica, acreditando que a combinação entre a experiência prática de gestão no retalho e a atualização constante de conhecimentos é a chave para enfrentar os desafios de um setor em constante transformação. O "bichinho" da tecnologia corre sempre em <em>background</em>!
             </p>
 
-            <!-- Experiência Profissional -->
             <fieldset style="margin-bottom: 10px;">
                 <legend>Experiência_Profissional</legend>
                 <ul style="font-size: 12px; margin: 5px 0; padding-left: 20px;">
@@ -191,7 +348,6 @@
                 </ul>
             </fieldset>
 
-            <!-- Educação -->
             <fieldset style="margin-bottom: 10px;">
                 <legend>Educação & Patches Instalados</legend>
                 <ul style="font-size: 12px; margin: 5px 0; padding-left: 20px;">
@@ -201,7 +357,6 @@
                 </ul>
             </fieldset>
 
-            <!-- Competências -->
             <fieldset style="margin-bottom: 10px;">
                 <legend>Skills & Drivers</legend>
                 <ul style="font-size: 12px; margin: 5px 0; padding-left: 20px;">
@@ -217,7 +372,6 @@
         </div>
     </div>
 
-    <!-- Janela do Internet Explorer (Wintech) -->
     <div class="window" id="ie-window">
         <div class="title-bar">
             <div class="title-bar-text">Wintech - Microsoft Internet Explorer</div>
@@ -228,8 +382,12 @@
             </div>
         </div>
         <div class="window-body" style="margin: 0; padding: 0; display: flex; flex-direction: column;">
-            <!-- Barra de Endereço Falsa -->
-            <div style="background: #ece9d8; padding: 5px; border-bottom: 1px solid #aca899; font-size: 12px; display: flex; align-items: center; gap: 10px;">
+            
+            <div style="padding: 15px 15px 0 15px;">
+                <button class="mobile-back-btn" onclick="closeWindow('ie-window')">← Iniciar</button>
+            </div>
+
+            <div style="background: #ece9d8; padding: 5px 15px; border-bottom: 1px solid #aca899; font-size: 12px; display: flex; align-items: center; gap: 10px;">
                 <span>Endereço:</span>
                 <input type="text" value="https://www.wintech.pt" readonly style="flex-grow: 1; padding: 2px;">
                 <a href="https://www.wintech.pt" target="_blank" style="text-decoration: none;">
@@ -237,10 +395,8 @@
                 </a>
             </div>
             
-            <!-- Conteúdo Simulado (Substitui o Iframe) -->
-            <div style="width: 100%; height: 350px; background-color: #ffffff; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
+            <div style="width: 100%; height: 100%; min-height: 350px; background-color: #ffffff; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
                 
-                <!-- Ícone clássico do IE grande -->
                 <img src="https://win98icons.alexmeub.com/icons/png/msie1-0.png" alt="IE Logo" width="64" height="64" style="margin-bottom: 15px;">
                 
                 <h1 style="color: #004e98; font-family: Tahoma, sans-serif; margin: 0 0 10px 0;">Wintech.pt</h1>
@@ -261,7 +417,6 @@
         </div>
     </div>
 
-    <!-- Janela do Bloco de Notas (Contactos) -->
     <div class="window" id="notepad-window">
         <div class="title-bar">
             <div class="title-bar-text">contactos.txt - Bloco de Notas</div>
@@ -271,16 +426,19 @@
                 <button aria-label="Close" onclick="closeWindow('notepad-window')"></button>
             </div>
         </div>
-        <div class="window-body" style="margin: 0; padding: 0;">
-            <!-- Menu Falso do Bloco de Notas -->
-            <div style="background: #ece9d8; padding: 2px 5px; border-bottom: 1px solid #aca899; font-size: 12px;">
+        <div class="window-body" style="margin: 0; padding: 0; display: flex; flex-direction: column; height: 100%;">
+            
+            <div style="padding: 15px 15px 0 15px;">
+                <button class="mobile-back-btn" onclick="closeWindow('notepad-window')">← Iniciar</button>
+            </div>
+
+            <div style="background: #ece9d8; padding: 2px 15px; border-bottom: 1px solid #aca899; font-size: 12px;">
                 <span style="margin-right: 10px; cursor: default;">Ficheiro</span>
                 <span style="margin-right: 10px; cursor: default;">Editar</span>
                 <span style="margin-right: 10px; cursor: default;">Formatar</span>
                 <span style="cursor: default;">Ajuda</span>
             </div>
-            <!-- Área de Texto -->
-            <textarea style="width: 100%; height: 250px; border: none; resize: none; font-family: 'Courier New', Courier, monospace; font-size: 14px; padding: 10px; box-sizing: border-box; outline: none;">
+            <textarea style="width: 100%; flex-grow: 1; border: none; resize: none; font-family: 'Courier New', Courier, monospace; font-size: 14px; padding: 15px; box-sizing: border-box; outline: none; min-height: 250px;">
 ========================================
        CONTACTOS - JOÃO FERNANDES
 ========================================
@@ -303,7 +461,6 @@
         </div>
     </div>
 
-    <!-- Janela do Minesweeper -->
     <div class="window" id="mines-window">
         <div class="title-bar">
             <div class="title-bar-text">Minesweeper</div>
@@ -314,8 +471,12 @@
             </div>
         </div>
         <div class="window-body" style="text-align: center;">
+            <div style="text-align: left;">
+                <button class="mobile-back-btn" onclick="closeWindow('mines-window')">← Iniciar</button>
+            </div>
+
             <div id="mines-grid"></div>
-            <button onclick="initMines()" style="margin-top: 5px;">☺ Reiniciar Jogo</button>
+            <button onclick="initMines()" style="margin-top: 15px;">☺ Reiniciar Jogo</button>
         </div>
     </div>
 
@@ -323,11 +484,11 @@
         // --- Gestão das Janelas ---
         function openWindow(id) {
             let win = document.getElementById(id);
-            win.style.display = 'block';
+            win.style.display = 'flex'; // Alterado para flex em vez de block para garantir a formatação no Mobile
             
             // Puxa a janela clicada para a frente de todas as outras
             document.querySelectorAll('.window').forEach(w => w.style.zIndex = 1);
-            win.style.zIndex = 10;
+            win.style.zIndex = 10000;
         }
 
         function closeWindow(id) {
@@ -348,7 +509,7 @@
                 
                 // Traz a janela para a frente ao arrastar
                 document.querySelectorAll('.window').forEach(w => w.style.zIndex = 1);
-                win.style.zIndex = 10;
+                win.style.zIndex = 10000;
             });
 
             document.addEventListener('mousemove', (e) => {
